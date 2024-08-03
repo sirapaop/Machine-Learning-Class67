@@ -1,9 +1,15 @@
 import numpy as np
 import matplotlib.pyplot as plt
+import pandas as pd
 
 np.random.seed(0)
-X = np.random.rand(100, 1) * 10
-y = 2 * X.squeeze() + 1 + np.random.randn(100) * 2
+X = np.random.rand(100, 1) *10
+y = 2 * X.squeeze() + 1 + np.random.randn(100) *2
+
+# df = pd.read_csv('../dataset/HeightWeight.csv')
+# # first_5_rows = df.head(100)    
+# X = np.array([[0], [2]])
+# y = np.array([0, 2])
 
 def gradient_descent(X, y, weights, alpha, learning_rate, n_iters):
     m = len(y)
