@@ -3,13 +3,10 @@ import matplotlib.pyplot as plt
 import pandas as pd
 
 np.random.seed(0)
-X = np.random.rand(100, 1) *10
-y = 2 * X.squeeze() + 1 + np.random.randn(100) *2
+X = np.array([0, 2])
+y = np.array([0, 2])
 
-# df = pd.read_csv('../dataset/HeightWeight.csv')
-# # first_5_rows = df.head(100)    
-# X = np.array([[0], [2]])
-# y = np.array([0, 2])
+
 
 def gradient_descent(X, y, weights, alpha, learning_rate, n_iters):
     m = len(y)
@@ -52,16 +49,18 @@ plt.tight_layout()
 plt.show()
 
 # Ridge regression cost function 
-slope_values = np.arange(-30, 30, 1)
+slope_values = np.arange(-4, 4, 0.1)
 plt.figure(figsize=(12, 6))
 
 for alpha in alphas:
     cost_ridge = [(np.sum((y - (slope * X.squeeze() + 1)) ** 2) + alpha * slope ** 2) for slope in slope_values]
     plt.plot(slope_values, cost_ridge, label=f'λ = {alpha}')
 
+
 plt.title('Ridge Regression Cost Function')
 plt.xlabel('Slope Values')
 plt.ylabel('Sum of Squared Residuals + λ * Slope^2')
+plt.axis([-3,3,0,5])
 plt.legend()
 plt.grid(True)
 plt.show()
